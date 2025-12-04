@@ -1,6 +1,29 @@
-# Todo List Application - React + TypeScript
+# Todo App - Beautiful Task Manager
 
 A modern, feature-rich Todo List application built with React and TypeScript. This application demonstrates advanced React concepts including components, hooks, file handling, and state management with a beautiful, modern UI design.
+
+## 🚀 Quick Start
+
+Run the app instantly with npx:
+
+```bash
+npx @yonathan-ashebir/todo-app
+```
+
+The app will automatically:
+- Build if needed
+- Find an available port (starting from 3000)
+- Open in your default browser
+- Serve the application locally
+
+## 📦 Installation
+
+You can also install it globally:
+
+```bash
+npm install -g @yonathan-ashebir/todo-app
+todo-app
+```
 
 ## Features
 

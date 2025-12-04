@@ -6,7 +6,7 @@ import { existsSync } from 'fs';
 import { createServer } from 'http';
 import { readFileSync } from 'fs';
 import { extname } from 'path';
-import { open } from 'open';
+import open from 'open';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
