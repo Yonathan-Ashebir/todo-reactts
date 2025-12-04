@@ -16,6 +16,7 @@ interface FilterSortBarProps {
   onSortChange: (order: SortOrder) => void;
   onSearchChange: (value: string) => void;
   onAddClick: () => void;
+  searchInputRef?: React.RefObject<HTMLInputElement | null>;
 }
 
 export default function FilterSortBar({
@@ -26,6 +27,7 @@ export default function FilterSortBar({
   onSortChange,
   onSearchChange,
   onAddClick,
+  searchInputRef,
 }: FilterSortBarProps) {
   return (
     <div className={styles.bar}>
@@ -33,9 +35,10 @@ export default function FilterSortBar({
         <div className={styles.search}>
           <FaSearch className={styles.searchIcon} />
           <input
+            ref={searchInputRef}
             type="text"
             className={styles.searchInput}
-            placeholder="Search tasks..."
+            placeholder="Search tasks... (⌘ + /)"
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label="Search tasks"
@@ -46,6 +49,7 @@ export default function FilterSortBar({
           type="button"
           className={styles.addBtn}
           onClick={onAddClick}
+          title="New Task (⌘ + K)"
         >
           <FaPlus />
           <span>New Task</span>
@@ -60,6 +64,7 @@ export default function FilterSortBar({
               filter === 'all' ? styles.active : ''
             }`}
             onClick={() => onFilterChange('all')}
+            title="All tasks (⌘ + 1)"
           >
             All
           </button>
@@ -68,6 +73,7 @@ export default function FilterSortBar({
               filter === 'completed' ? styles.active : ''
             }`}
             onClick={() => onFilterChange('completed')}
+            title="Completed tasks (⌘ + 2)"
           >
             Completed
           </button>
@@ -76,6 +82,7 @@ export default function FilterSortBar({
               filter === 'pending' ? styles.active : ''
             }`}
             onClick={() => onFilterChange('pending')}
+            title="Pending tasks (⌘ + 3)"
           >
             Pending
           </button>
@@ -87,7 +94,7 @@ export default function FilterSortBar({
               type="button"
               className={styles.sortButton}
               onClick={() => onSortChange('desc')}
-              title="Sort descending"
+              title="Sort descending (⌘ + S)"
             >
               <FaSortAmountUp className={styles.sortIcon} />
             </button>
@@ -96,7 +103,7 @@ export default function FilterSortBar({
               type="button"
               className={styles.sortButton}
               onClick={() => onSortChange('asc')}
-              title="Sort ascending"
+              title="Sort ascending (⌘ + S)"
             >
               <FaSortAmountDown className={styles.sortIcon} />
             </button>

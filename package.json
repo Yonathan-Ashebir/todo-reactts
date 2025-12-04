@@ -1,6 +1,6 @@
 {
   "name": "@yonathan-ashebir/todo-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A beautiful, feature-rich Todo List application with React, TypeScript, dark theme, file attachments, and subtasks",
   "type": "module",
   "main": "bin/todo-app.js",
@@ -11,7 +11,8 @@
     "dist",
     "bin",
     "package.json",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "keywords": [
     "todo",
@@ -28,7 +29,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yonathan-ashebir/todo-app.git"
+    "url": "https://github.com/Yonathan-Ashebir/todo-reactts.git"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -26,7 +26,7 @@ if (!existsSync(distPath)) {
 }
 
 // Find an available port
-function findFreePort(startPort = 3000) {
+function findFreePort(startPort = 5559) {
   return new Promise((resolve, reject) => {
     const server = createServer();
     server.listen(startPort, () => {
@@ -99,7 +99,7 @@ function createStaticServer(port) {
 // Main function
 async function start() {
   try {
-    const port = await findFreePort(3000);
+    const port = await findFreePort(5559);
     const server = await createStaticServer(port);
     const url = `http://localhost:${port}`;
 

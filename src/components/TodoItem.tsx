@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { FaTrash, FaCheck, FaImage, FaFile, FaCalendarAlt } from 'react-icons/fa';
 import type { Todo } from '../types';
 import styles from './TodoItem.module.css';
@@ -8,15 +9,20 @@ interface TodoItemProps {
   onDelete: (id: string) => void;
   onToggleComplete: (id: string) => void;
   onToggleSubtask: (todoId: string, subtaskId: string) => void;
+  isSelected?: boolean;
 }
 
-export default function TodoItem({
-  todo,
-  onEdit,
-  onDelete,
-  onToggleComplete,
-  onToggleSubtask,
-}: TodoItemProps) {
+const TodoItem = forwardRef<HTMLLIElement, TodoItemProps>(function TodoItem(
+  {
+    todo,
+    onEdit,
+    onDelete,
+    onToggleComplete,
+    onToggleSubtask,
+    isSelected = false,
+  },
+  ref
+) {
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
       month: 'short',
@@ -32,7 +38,10 @@ export default function TodoItem({
 
   return (
     <li
-      className={`${styles.todoItem} ${todo.completed ? styles.completed : ''}`}
+      ref={ref}
+      className={`${styles.todoItem} ${todo.completed ? styles.completed : ''} ${
+        isSelected ? styles.selected : ''
+      }`}
       onClick={() => onEdit(todo)}
     >
       <div className={styles.content}>
@@ -129,4 +138,6 @@ export default function TodoItem({
       </div>
     </li>
   );
-}
+});
+
+export default TodoItem;

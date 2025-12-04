@@ -1,5 +1,7 @@
 # Todo App - Beautiful Task Manager
 
+![Screenshot](screenshot.png)
+
 A modern, feature-rich Todo List application built with React and TypeScript. This application demonstrates advanced React concepts including components, hooks, file handling, and state management with a beautiful, modern UI design.
 
 ## 🚀 Quick Start
@@ -12,7 +14,7 @@ npx @yonathan-ashebir/todo-app
 
 The app will automatically:
 - Build if needed
-- Find an available port (starting from 3000)
+- Find an available port (starting from 5559)
 - Open in your default browser
 - Serve the application locally
 
@@ -33,13 +35,23 @@ todo-app
 - 🗑️ **Delete Tasks**: Remove tasks with a single click
 - ✓ **Complete Tasks**: Mark tasks as complete with visual feedback
 
-### Advanced Features
+### To Infinity and Beyond 🚀
+
+<div align="center">
+  <img src="buzz.png" alt="Buzz Lightyear" width="200" />
+</div>
+
 - 📎 **File & Image Attachments**: Attach multiple files and images to tasks
+- 🖱️ **Drag & Drop Support**: Drag files directly onto the page to create a new task with attachments, or drop files into the task dialog
 - 📋 **Subtasks**: Create nested subtasks with independent completion status
 - 📅 **Creation Dates**: Automatic tracking of when tasks were created
 - 🔍 **Filtering**: Filter tasks by status (All, Completed, Pending)
 - 🔄 **Sorting**: Sort tasks by creation date (Ascending/Descending)
 - 🎨 **Beautiful UI**: Modern gradient theme with smooth animations
+- 🌙 **Dark Theme**: Toggle between light and dark modes
+- ⌨️ **Keyboard Shortcuts**: Power user shortcuts for all actions
+- 💾 **Auto-save**: Changes persist automatically
+- 🔒 **Local Storage**: All data saved locally in your browser
 
 ### Task Information Display
 - Task creation date and time
@@ -135,9 +147,12 @@ npm run preview
 
 ### Adding a Task
 1. Type your task title in the input field
-2. (Optional) Click the paperclip icon to attach files or images
+2. (Optional) Attach files or images by:
+   - Clicking the paperclip icon to browse files
+   - **Dragging and dropping files** directly onto the page (opens new task dialog with files attached)
+   - **Dragging and dropping files** into the task dialog
 3. (Optional) Add subtasks by clicking "Add Subtask" and entering text
-4. Click "Add Task" or press Enter
+4. Click "Done" or close the dialog (changes auto-save)
 
 ### Editing a Task
 1. Click the "Edit" button on any task
@@ -182,10 +197,15 @@ npm run preview
 ## File Attachments
 
 The application supports:
-- **Images**: JPG, PNG, GIF, and other image formats
-- **Documents**: PDF, DOC, DOCX, TXT files
+- **Images**: JPG, PNG, GIF, SVG, and other image formats
+- **Documents**: PDF, DOC, DOCX, PPT, PPTX, TXT files
 - Multiple attachments per task
 - Visual indicators for attachment types
+- **Drag & Drop**: 
+  - Drag files onto the main page to instantly create a new task with those files attached
+  - Drag files into the task dialog to add them to an existing or new task
+  - Supports multiple files at once
+  - Automatic duplicate detection prevents adding the same file twice
 
 ## Subtasks
 
@@ -212,7 +232,7 @@ This application works in all modern browsers that support:
 
 ## License
 
-This project is created for educational purposes as part of the A2SV curriculum.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Author
 

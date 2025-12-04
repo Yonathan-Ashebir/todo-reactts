@@ -33,6 +33,17 @@
   background: #252535;
 }
 
+.todoItem.selected {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+[data-theme='dark'] .todoItem.selected {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+}
+
 .content {
   display: flex;
   flex-direction: column;
