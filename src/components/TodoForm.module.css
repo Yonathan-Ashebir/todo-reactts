@@ -1,47 +1,478 @@
 .form {
-  display: flex;
-  gap: 12px;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 24px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.input {
-  flex: 1;
-  padding: 14px 16px;
+[data-theme='dark'] .form {
+  background: #1e1e2e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.titleSection {
+  margin-bottom: 16px;
+}
+
+.titleLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .titleLabel {
+  color: #d1d5db;
+}
+
+.textAreaWrapper {
+  position: relative;
+  border-radius: 12px;
   border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.2s ease;
+  background: #f9fafb;
+  padding: 10px 12px 12px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme='dark'] .textAreaWrapper {
+  background: #252535;
+  border-color: #3a3a4a;
+}
+
+.textArea {
+  width: 100%;
+  border: none;
   outline: none;
+  resize: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 72px;
+  overflow: hidden;
+  color: #111827;
+  padding-right: 44px; /* avoid typing under the attach button */
+  transition: color 0.3s ease;
 }
 
-.input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+[data-theme='dark'] .textArea {
+  color: #e5e7eb;
 }
 
-.input::placeholder {
+.textArea::placeholder {
   color: #9ca3af;
 }
 
+[data-theme='dark'] .textArea::placeholder {
+  color: #6b7280;
+}
+
+.attachBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 8px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  color: #667eea;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+[data-theme='dark'] .attachBtn {
+  background: #2a2a3a;
+  border-color: #3a3a4a;
+}
+
+.attachBtn:hover {
+  background: #f5f7ff;
+  border-color: #667eea;
+}
+
+.fileInput {
+  display: none;
+}
+
+.attachments {
+  margin-top: 8px;
+  padding: 6px 0 2px;
+}
+
+.attachmentsRow {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 4px 6px;
+}
+
+.attachment {
+  flex: 0 0 auto;
+  width: 130px;
+  padding: 8px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+[data-theme='dark'] .attachment {
+  background: #2a2a3a;
+  border-color: #3a3a4a;
+}
+
+.attachment:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.attachmentIconWrapper {
+  width: 100%;
+  height: 72px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+[data-theme='dark'] .attachmentIconWrapper {
+  background: #1a1a2a;
+}
+
+.attachmentThumb {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.attachmentIcon {
+  font-size: 28px;
+  color: #667eea;
+}
+
+.attachmentInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attachmentName {
+  color: #374151;
+  max-width: 96px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .attachmentName {
+  color: #d1d5db;
+}
+
+.removeAttachment {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: white;
+  border: 1px solid #fecaca;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.removeAttachment:hover {
+  transform: scale(1.1);
+}
+
+.subtasksSection {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+[data-theme='dark'] .subtasksSection {
+  background: #252535;
+}
+
+.subtasksHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.subtasksLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .subtasksLabel {
+  color: #d1d5db;
+}
+
+.subtasksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subtaskItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtaskCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+[data-theme='dark'] .subtaskCheckbox {
+  background: #2a2a3a;
+  border-color: #4a4a5a;
+}
+
+.subtaskCheckbox:hover {
+  border-color: #667eea;
+}
+
+.subtaskCheckbox.checked {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+}
+
+.subtaskField {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: white;
+  color: #111827;
+}
+
+[data-theme='dark'] .subtaskField {
+  background: #2a2a3a;
+  border-color: #3a3a4a;
+  color: #e5e7eb;
+}
+
+.subtaskField:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.subtaskCompleted {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.removeSubtask {
+  padding: 10px;
+  background: #fee2e2;
+  border: none;
+  border-radius: 6px;
+  color: #ef4444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.removeSubtask:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+.addSubtaskBtn {
+  padding: 6px 12px;
+  background: white;
+  border: 2px dashed #d1d5db;
+  border-radius: 6px;
+  color: #667eea;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .addSubtaskBtn {
+  background: #2a2a3a;
+  border-color: #4a4a5a;
+  color: #a78bfa;
+}
+
+.addSubtaskBtn:hover {
+  border-color: #667eea;
+  background: #f5f7ff;
+}
+
+[data-theme='dark'] .addSubtaskBtn:hover {
+  border-color: #a78bfa;
+  background: #3a3a4a;
+}
+
 .addBtn {
+  width: 100%;
   padding: 14px 24px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .addBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
 }
 
 .addBtn:active {
   transform: translateY(0);
 }
 
+.previewOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+}
+
+.previewDialog {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #f3f4f6;
+}
+
+.previewDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.previewName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.previewActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.previewButton,
+.previewButtonSecondary {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.previewButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.previewButtonSecondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.previewButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+}
+
+.previewButtonSecondary:hover {
+  background: #e5e7eb;
+}
+
+@media (max-width: 640px) {
+  .form {
+    padding: 20px 16px 22px;
+  }
+
+  .attachment {
+    width: 120px;
+  }
+}

@@ -6,13 +6,22 @@ interface TodoListProps {
   todos: Todo[];
   onEdit: (todo: Todo) => void;
   onDelete: (id: string) => void;
+  onToggleComplete: (id: string) => void;
+  onToggleSubtask: (todoId: string, subtaskId: string) => void;
 }
 
-export default function TodoList({ todos, onEdit, onDelete }: TodoListProps) {
+export default function TodoList({
+  todos,
+  onEdit,
+  onDelete,
+  onToggleComplete,
+  onToggleSubtask,
+}: TodoListProps) {
   if (todos.length === 0) {
     return (
       <div className={styles.emptyState}>
-        <p>No tasks yet. Add your first task above!</p>
+        <div className={styles.emptyIcon}>📝</div>
+        <p className={styles.emptyText}>No tasks yet. Add your first task above!</p>
       </div>
     );
   }
@@ -25,9 +34,10 @@ export default function TodoList({ todos, onEdit, onDelete }: TodoListProps) {
           todo={todo}
           onEdit={onEdit}
           onDelete={onDelete}
+          onToggleComplete={onToggleComplete}
+          onToggleSubtask={onToggleSubtask}
         />
       ))}
     </ul>
   );
 }
-

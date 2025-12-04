@@ -1,17 +1,49 @@
 {
-  "name": "react-ts",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@yonathan-ashebir/todo-app",
+  "version": "1.0.0",
+  "description": "A beautiful, feature-rich Todo List application with React, TypeScript, dark theme, file attachments, and subtasks",
   "type": "module",
+  "main": "bin/todo-app.js",
+  "bin": {
+    "todo-app": "./bin/todo-app.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "todo",
+    "todo-list",
+    "task-manager",
+    "react",
+    "typescript",
+    "productivity",
+    "tasks",
+    "cli",
+    "npx"
+  ],
+  "author": "yonathan-ashebir",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yonathan-ashebir/todo-app.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
